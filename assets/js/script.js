@@ -2,52 +2,39 @@
 
 
 
-const navbar = document.querySelector("[data-navbar]");
-const navbarLinks = document.querySelectorAll("[data-nav-link]");
-const navbarToggler = document.querySelector("[data-nav-toggler]");
-
-navbarToggler.addEventListener("click", function () {
-  navbar.classList.toggle("active");
-  this.classList.toggle("active");
-});
-
-for (let i = 0; i < navbarLinks.length; i++) {
-  navbarLinks[i].addEventListener("click", function () {
-    navbar.classList.remove("active");
-    navbarToggler.classList.remove("active");
-  });
-}
-
-
-
 /**
- * search toggle
+ * navbar toggle
  */
 
-const searchTogglers = document.querySelectorAll("[data-search-toggler]");
-const searchBox = document.querySelector("[data-search-box]");
+const overlay = document.querySelector("[data-overlay]");
+const navOpenBtn = document.querySelector("[data-nav-open-btn]");
+const navbar = document.querySelector("[data-navbar]");
+const navCloseBtn = document.querySelector("[data-nav-close-btn]");
 
-for (let i = 0; i < searchTogglers.length; i++) {
-  searchTogglers[i].addEventListener("click", function () {
-    searchBox.classList.toggle("active");
+const navElems = [overlay, navOpenBtn, navCloseBtn];
+
+for (let i = 0; i < navElems.length; i++) {
+  navElems[i].addEventListener("click", function () {
+    navbar.classList.toggle("active");
+    overlay.classList.toggle("active");
   });
 }
 
 
 
 /**
- * header
+ * header & go top btn active on page scroll
  */
 
 const header = document.querySelector("[data-header]");
-const backTopBtn = document.querySelector("[data-back-top-btn]");
+const goTopBtn = document.querySelector("[data-go-top]");
 
 window.addEventListener("scroll", function () {
-  if (window.scrollY >= 200) {
+  if (window.scrollY >= 80) {
     header.classList.add("active");
-    backTopBtn.classList.add("active");
+    goTopBtn.classList.add("active");
   } else {
     header.classList.remove("active");
-    backTopBtn.classList.remove("active");
+    goTopBtn.classList.remove("active");
   }
 });
